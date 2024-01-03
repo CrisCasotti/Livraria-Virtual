@@ -1,0 +1,11 @@
+# Arquivos temporários
+node_modules/
+
+# Logs
+*.log
+
+# Arquivos de configuração do sistema
+.DS_Store
+
+# Ambientes de desenvolvimento
+.env
