@@ -1,0 +1,33 @@
+name: Ionic iOS Build
+
+on:
+  push:
+    branches:
+      - main # ajuste conforme necessário
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '14'
+
+    - name: Install Dependencies
+      run: |
+        npm ci
+
+    - name: Install Fastlane
+      run: |
+        gem install bundler
+        bundle install
+
+    - name: Build Ionic App
+      run: |
+        ionic cordova build ios
+        fastlane beta
